@@ -9,9 +9,11 @@ puts "---------------------Welcome to Hangman setup-----------------------------
 
   def setup_players
     puts "Hello! What's your name?!"
-    p_name = gets.chomp
-    p = Hangman::Player.new({name: p_name})
+    @p_name = gets.chomp
+    p = Hangman::Player.new({name: @p_name})
+    @save = Hangman::Save.new(@p_name)
     p
   end
 
-  Hangman::Game.new(setup_players).play
+  
+  Hangman::Game.new(setup_players, @save).play

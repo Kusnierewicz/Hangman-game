@@ -1,14 +1,34 @@
 module Hangman
   class Game
-  	attr_reader :players, :pass, :round, :save
+  	attr_reader :player, :pass, :round, :save
 
-  	def initialize(player, pass = Password.new, save = Save.new)
+  	def initialize(player, save, pass = Password.new)
   	  @player = player
   	  @pass = pass
       $round = 0
       @letter_base = ('a'..'z').to_a
       @save = save
   	end
+
+  	def save_to_yaml
+      YAML.dump ({
+        :round => $round,
+        :player => @player,
+        :pass => @pass,
+        :used_letters => @used_letters 
+      })
+  	end
+
+  	def save_game
+  	  if $round == 2
+        time = Time.new
+        f = File.open("saved_games/#{@player.name}_#{time.to_i}.txt", "w")
+        serialized_object = save_to_yaml
+	    f.puts serialized_object
+	    f.close
+	  end
+    end
+
 
   	def game_over
       return "#{@player.name} was able to decipher the password and has won the game!!!" if winner?
@@ -27,15 +47,16 @@ module Hangman
     end
 
     def feedback
-      unless @proposal == nil
-  	    @used_letters << @proposal
-  	  end
-  	  puts "You have already used: #{@used_letters}"
+   	  puts "You have already used: #{@used_letters}"
   	end
 
     def get_move(proposal = gets.chomp)
       @proposal = proposal
   	  pass.letter_checker(proposal)
+  	  unless @proposal == nil
+  	    @used_letters << @proposal
+  	  end
+
   	end
 
   	def guess_full_pass(proposal = gets.chomp)
@@ -67,12 +88,13 @@ module Hangman
   	def play
   	  @used_letters = []
 
-  	  puts save.list_of_games
-
+  	  
+  	  
 
   	  puts "start hangman"
-=begin
+
   	  while true
+  	  	
         pass.print_board
         feedback
         get_move
@@ -82,9 +104,10 @@ module Hangman
           puts game_over
           return
         end
+        save_game
         next_round      
       end
-=end
+
   	end
 
   	

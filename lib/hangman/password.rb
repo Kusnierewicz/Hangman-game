@@ -4,17 +4,21 @@ module Hangman
   	attr_reader :result
 
   	def initialize
-  	  @result = default_board(set_pass)
+  	  @result = default_board(pass_decrypt(set_pass).join)
+  	end
+
+  	def test
+  	  pass_decrypt(@pass_encrypted).join
   	end
 
 	def print_board
-	  puts @pass.inspect
+	  #puts test.inspect
 	  #puts result.inspect
 	  puts result.gsub(/\w/){|l| l + ' '}.inspect
 	end
 
 	def letter_checker(character)
-	  a = (0 ... @pass.length).find_all { |i| @pass[i,1] == character }
+	  a = (0 ... test.length).find_all { |i| test[i,1] == character }
 	  a.each do |i|
 	    result[i] = character
 	  end
@@ -25,13 +29,25 @@ module Hangman
     end
 
     def check_full_password(proposal)
-      proposal == @pass
+      proposal == pass_decrypt(@pass_encrypted)
     end
 
     private
 
     def default_board(text)
       text.gsub(/./, '_')
+	end
+
+	def pass_decrypt(array)
+	  array.collect {|a| a.chr}
+	end
+
+	def pass_encrypt(string)
+	  array = []
+	  string.each_byte do |c|
+	  	array << c
+	  end
+	  array
 	end
 
 	def set_pass
@@ -41,8 +57,12 @@ module Hangman
 	  unless lines[p].length > 4 && lines[p].length < 13 
 	  	p = rand(line_count)
 	  end
-	  @pass = lines[p].downcase.chomp
-	  @pass
+	  pass = lines[p].downcase.chomp
+	  @pass_encrypted = pass_encrypt(pass)
+	  #pass.each_byte do |c|
+	  #	@pass_encrypted << c
+	  #end
+	  #@pass_encrypted
 
 	end
 
