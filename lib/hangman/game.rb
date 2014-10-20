@@ -67,7 +67,7 @@ module Hangman
   	def play
   	  @used_letters = []
 
-  	  save.list_of_games
+  	  puts save.list_of_games
 
 
   	  puts "start hangman"
