@@ -86,6 +86,7 @@ module Hangman
   	#you can serialize your game class too!
   	
   	def play
+  		
   	  @used_letters = []
 
   	  
