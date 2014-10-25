@@ -1,0 +1,20 @@
+--- !ruby/object:Hangman::Game
+player: !ruby/object:Hangman::Player
+  name: luc
+password: !ruby/object:Hangman::Password
+  pass_encrypted:
+  - 104
+  - 121
+  - 112
+  - 101
+  - 114
+  - 97
+  - 99
+  - 116
+  - 105
+  - 118
+  - 101
+  result: _____a_____
+  used_letters:
+  - a
+round: 2

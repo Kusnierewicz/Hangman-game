@@ -16,8 +16,8 @@ puts "---------------------Welcome to Hangman setup-----------------------------
   end
 
   
-  new_game = Hangman::Game.new(setup_players, @save)
-  require 'yaml'
-  thing = YAML.load_file('saved_games/luc_1413842212.txt')
-  puts thing.inspect
-  thing.play
+  new_game = Hangman::Game.new(setup_players, @save).play
+  #require 'yaml'
+  #thing = YAML.load_file('saved_games/luc_1413842212.txt')
+  #puts thing.inspect
+  #thing.play
