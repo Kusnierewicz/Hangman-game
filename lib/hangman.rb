@@ -28,7 +28,13 @@ module Hangman
   	def start_game
   	  puts "---------------------Welcome to Hangman #{@player.name}-------------------------------"
   	  @player.setup_player
-  	  play
+      puts "czy chcesz zaladowac stan gry"
+      y = gets.chomp
+      if y == "y"
+        load_game
+      else
+  	    play
+      end
   	end
 
   	def game_over
@@ -43,12 +49,12 @@ module Hangman
     end	
 
     def options
-  	  puts "would you like to save the game?(yes/no)"
+  	  puts "would you like to save the game?(y/n)"
   	  s = gets.chomp
-  	  s == "yes" ? (puts "ok, the game is saved") : (puts "ok not yet")
-  	  puts "would you like to guess full password?(yes/no)"
+  	  s == "y" ? Save.save_game(self, @player.name) : (puts "ok not yet")
+  	  puts "would you like to guess full password?(y/n)"
   	  a = gets.chomp 
-  	  a == "yes" ? guess_full_pass : (puts "ok not yet")
+  	  a == "y" ? guess_full_pass : (puts "ok not yet")
   	end
 
     def get_move(proposal = gets.chomp)
@@ -70,8 +76,8 @@ module Hangman
   	  f = File.open('../saved_games/' + 'luc_1414188484.yml', 'r')
   	  yaml = f.read
   	  game = Game.new
-	  game = YAML::load(yaml)
-	  game.resume
+	    game = YAML::load(yaml)
+	    game.resume
     end
 
     def save_game
@@ -82,13 +88,20 @@ module Hangman
       f.close
     end
 
-  	def play
-  	  puts "czy chcesz zaladowac stan gry"
-  	  y = gets.chomp
-  	  if y == "y"
-  	  	load_game
+    def loading
+      puts "list of saved games"
+      puts Save.list_of_games
+      puts "choose a file by puting his number on the list"
+      p = gets.chomp
+      Save.load_game(Save.access_list(p))
+      resume
+    end
 
-  	  else
+
+  	def play
+  	  
+
+  	  
   	    while true
   	  	  which_round
           @password.print_board
@@ -101,17 +114,17 @@ module Hangman
             puts game_over
             return
           end
-          save_game
+          #save_game
               
         end
-      end
+      
 
   	end
 
   	def resume
-	  puts "Welcome back #{@player.name}!"
-	  play
-	end
+	    puts "Welcome back #{@player.name}!"
+	    play
+	  end
 
   end
 end

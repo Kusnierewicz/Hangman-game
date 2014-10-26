@@ -4,17 +4,15 @@ player: !ruby/object:Hangman::Player
 password: !ruby/object:Hangman::Password
   pass_encrypted:
   - 104
-  - 121
-  - 112
+  - 117
+  - 109
+  - 109
   - 101
   - 114
-  - 97
-  - 99
-  - 116
-  - 105
-  - 118
-  - 101
-  result: _____a_____
+  result: ____e_
   used_letters:
   - a
-round: 2
+  - i
+  - o
+  - e
+round: 5
