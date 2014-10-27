@@ -19,11 +19,12 @@ module Hangman
 =end
   	def self.load_game(filename)
       puts Dir.pwd
-  	  f = File.open('../saved_games/#{filename}', 'r')
+      puts "../saved_games/#{filename}"
+  	  f = File.open("../saved_games/#{filename}", 'r')
   	  yaml = f.read
   	  game = Game.new
-	    game = YAML::load(yaml)
-	    game.resume
+	  game = YAML::load(yaml)
+	  game.resume
     end
 
     def self.save_game(file, name)
@@ -40,12 +41,13 @@ module Hangman
   	  @list = []
   	  Dir.foreach('../saved_games/') do |item|
   	    @list << item
-	    end
-	    @list
+	  end
+	  @list.select! {|item| item =~ /\w+/}
+	  @list
 	  end
 
-    def self.access_list(list = @list, position)
-      list[position + 1]
+    def self.access_list(position)
+      @list[position.to_i - 1]
     end
 
 	

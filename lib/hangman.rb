@@ -31,7 +31,7 @@ module Hangman
       puts "czy chcesz zaladowac stan gry"
       y = gets.chomp
       if y == "y"
-        load_game
+        loading
       else
   	    play
       end
@@ -76,8 +76,8 @@ module Hangman
   	  f = File.open('../saved_games/' + 'luc_1414188484.yml', 'r')
   	  yaml = f.read
   	  game = Game.new
-	    game = YAML::load(yaml)
-	    game.resume
+	  game = YAML::load(yaml)
+	  game.resume
     end
 
     def save_game
@@ -93,6 +93,7 @@ module Hangman
       puts Save.list_of_games
       puts "choose a file by puting his number on the list"
       p = gets.chomp
+      
       Save.load_game(Save.access_list(p))
       resume
     end
