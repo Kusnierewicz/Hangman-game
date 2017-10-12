@@ -1,24 +1,39 @@
-# Hangman
+# The Odin Project Assignment: ["Build a Hangman Game in Ruby"](https://www.theodinproject.com/courses/ruby-programming/lessons/file-i-o-and-serialization)
 
-TODO: Write a gem description
+Hangman is a paper and pencil guessing game for two or more players. One player thinks of a word, phrase or sentence and the other tries to guess it by suggesting letters or numbers, within a certain number of guesses. Please see [Wikipedia article](https://en.wikipedia.org/wiki/Hangman_(game)) for extended info.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Save Hangman folder in your chosen location
 
-    gem 'hangman'
-
-And then execute:
+And then inside of it execute:
 
     $ bundle
 
-Or install it yourself as:
+## Usage
 
-    $ gem install hangman
+To play the game run:
+
+    ruby Hangman-game\run_game\play.rb
 
 ## Usage
 
-TODO: Write usage instructions here
+At the start of the game please state your name
+
+After that you can choose to load a saved game.
+	There is a one avalible instant of the game where you can check almost fully answerd puzzle. Only one letter is missing and it is letter "d"
+
+Regardles of your choice, you are now able to guess next letter of the given password. All letters in the password are small_case letters. Originaly you are given 12 guesses to find out the password. If you've load the old game you are probably having even smaller options.
+
+After quessing the letter, you are asked if you would like to save the game. You can do this by inputing "y" on the console.
+
+Then you can also try to answer the riddle right in that moment but be aware that if unlucky, you will hang.. (This feature is bugy right now!!)
+
+If you gess all the letters correctly you win and you can live.. for now!
+
+## Still in developement stage!!
+
+Guessing in the middle of the game
 
 ## Contributing
 
