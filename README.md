@@ -16,20 +16,19 @@ To play the game run:
 
     ruby Hangman-game\run_game\play.rb
 
-## Usage
+## How to Play
 
 At the start of the game please state your name
 
-After that you can choose to load a saved game.
-	There is a one avalible instant of the game where you can check almost fully answerd puzzle. Only one letter is missing and it is letter "d"
+After that, you can choose to load a saved game. There is one available instant of the game where you can check almost fully answered the puzzle. Only one letter is missing and it is letter "d"
 
-Regardles of your choice, you are now able to guess next letter of the given password. All letters in the password are small_case letters. Originaly you are given 12 guesses to find out the password. If you've load the old game you are probably having even smaller options.
+Regardless of your choice, you are now able to guess next letter of the given password. All letters in the password are small_case letters. Originally you are given 12 guesses to find out the password. If you've loaded the old game you are probably having an even smaller number of options.
 
-After quessing the letter, you are asked if you would like to save the game. You can do this by inputing "y" on the console.
+After guessing the letter, you are asked if you would like to save the game. You can do this by inputting "y" on the console.
 
-Then you can also try to answer the riddle right in that moment but be aware that if unlucky, you will hang.. (This feature is bugy right now!!)
+Then you can also try to answer the riddle right in that moment but be aware that if unlucky, you will hang.. (This feature is buggy right now!!)
 
-If you gess all the letters correctly you win and you can live.. for now!
+If you guess all the letters correctly you win and you can live.. for now!
 
 ## Still in developement stage!!
 
