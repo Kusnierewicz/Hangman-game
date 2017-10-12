@@ -4,7 +4,17 @@ TODO: Write a gem description
 
 ## Installation
 
-TODO: Write usage instructions here
+Add this line to your application's Gemfile:
+
+    gem 'hangman'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install hangman
 
 ## Usage
 

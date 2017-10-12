@@ -5,51 +5,51 @@ require "yaml"
 module Hangman
   class Save
 
-  	attr_reader :player_name
+    def initialize
+    end
+
+  	
 =begin
-  	r - Read only. The file must exist.
+ 	r - Read only. The file must exist.   
 	w - Create an empty file for writing.
 	a - Append to a file.The file is created if it does not exist.
 	r+ - Open a file for update both reading and writing. The file must exist.
 	w+ - Create an empty file for both reading and writing.
 	a+ - Open a file for reading and appending. The file is created if it does not exist.
 =end
-  	def initialize(player_name)
-  	  @player_name = player_name
+  	def self.load_game(filename)
+      puts Dir.pwd
+      puts "../saved_games/#{filename}"
+  	  f = File.open("../saved_games/#{filename}", 'r')
+  	  yaml = f.read
+  	  game = Game.new
+	  game = YAML::load(yaml)
+	  game.resume
+    end
 
-  	end
-
-    def save_game
+    def self.save_game(file, name)
       time = Time.new
-      f = File.open("saved_games/#{@player_name}_#{time.to_i}.txt", "w")
-
-	  f.write("Warning: I don't know what to do!\n")
-	  f.close #=> Make sure you close the file after you open it.
-    end
-
-    def load_game
-      f.read(3) #=> returns 'War' from the example earlier.
-	  f.rewind #=> moves the file pointer back to the beginning of the file.
-	  f.read(3) #=> returns 'War' again
-	  f.rewind #=> moves the file pointer back to the beginning of the file.
-	  f.seek(3)  #=> moves the file pointer to the third position in the file.
-	  f.read(3) #=> returns 'nin'
-	  f.rewind #=> moves the file pointer back to the beginning of the file.
-	  f.readline #=> returns "Warning: some really crazy stuff just happened!\n"
-	  f.rewind #=> moves the file pointer back to the beginning of the file.
-	  f.read  #=> reads the entire file.
-      
+      f = File.open("../saved_games/#{name}_#{time.to_i}.yml", "w")
+      serialized_object = YAML.dump (file)
+      f.puts serialized_object
+      f.close
     end
 
 
-  	def list_of_games
+  	def self.list_of_games
       puts Dir.pwd
   	  @list = []
-  	  Dir.foreach('saved_games/') do |item|
+  	  Dir.foreach('../saved_games/') do |item|
   	    @list << item
 	  end
+	  @list.select! {|item| item =~ /\w+/}
 	  @list
-	end  
+	  end
+
+    def self.access_list(position)
+      @list[position.to_i - 1]
+    end
+
 	
   end
 end
