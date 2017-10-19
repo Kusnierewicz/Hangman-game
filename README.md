@@ -32,7 +32,7 @@ If you guess all the letters correctly you win and you can live.. for now!
 
 ## Still in developement stage!!
 
-Guessing in the middle of the game
+Game should recognize if you are trying to use character you've already proposed earlier. Right now you can guess "e" 12 times.
 
 ## Contributing
 

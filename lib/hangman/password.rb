@@ -3,7 +3,7 @@ module Hangman
 
   	attr_accessor :result, :used_letters
 
-  	
+
 
   	def initialize
   	  @result = default_board(pass_decrypt(set_pass).join)
@@ -21,7 +21,8 @@ module Hangman
   	end
 
 	def print_board
-	  puts result.gsub(/\w/){|l| l + ' '}.inspect
+	  puts ""
+	  puts "Password: #{result.gsub(/\w/){|l| l + ' '}.inspect}"
 	end
 
 	def letter_checker(character)
@@ -36,7 +37,11 @@ module Hangman
     end
 
     def check_full_password(proposal)
-      proposal == pass_decrypt(@pass_encrypted)
+      proposal == pass_decrypt(@pass_encrypted).join
+    end
+
+    def print_full_password
+      pass_decrypt(@pass_encrypted).join
     end
 
     def feedback
@@ -45,7 +50,7 @@ module Hangman
 
     private
 
-    def pass_encrypted=(pass_encrypted)
+    def pass_encrypted(pass_encrypted)
   	  @pass_encrypted = pass_encrypted
   	end
 
@@ -69,15 +74,15 @@ module Hangman
 	  lines = File.readlines("../5desk.txt")
 	  line_count = lines.size
 	  p = rand(line_count)
-	  unless lines[p].length > 4 && lines[p].length < 13 
+	  unless lines[p].length > 4 && lines[p].length < 13
 	  	p = rand(line_count)
 	  end
 	  pass = lines[p].downcase.chomp
+	  @passwordd = pass
 	  @pass_encrypted = pass_encrypt(pass)
-
 	end
 
-	
+
 
   end
 end
