@@ -22,17 +22,17 @@ At the start of the game please state your name
 
 After that, you can choose to load a saved game. There is one available instant of the game where you can check almost fully answered the puzzle. Only one letter is missing and it is letter "d"
 
-Regardless of your choice, you are now able to guess next letter of the given password. All letters in the password are small_case letters. Originally you are given 12 guesses to find out the password. If you've loaded the old game you are probably having an even smaller number of options.
+Regardless of your choice, you are now able to guess next letter of the given password. All letters in the password are small_case letters. Originally you are given 12 guesses to find out the password.
 
 After guessing the letter, you are asked if you would like to save the game. You can do this by inputting "y" on the console.
 
-Then you can also try to answer the riddle right in that moment but be aware that if unlucky, you will hang.. (This feature is buggy right now!!)
+Then you can also try to answer the riddle right in that moment but be aware that if unlucky, you will hang..
 
 If you guess all the letters correctly you win and you can live.. for now!
 
-## Still in developement stage!!
+## Still in a developement stage!!
 
-Game should recognize if you are trying to use character you've already proposed earlier. Right now you can guess "e" 12 times.
+Let me know if you find a bug!
 
 ## Contributing
 
@@ -41,3 +41,7 @@ Game should recognize if you are trying to use character you've already proposed
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## License
+
+\* See [license.txt](https://github.com/Kusnierewicz/Hangman-game/blob/master/LICENSE.txt) for usage details.
