@@ -1,0 +1,17 @@
+--- !ruby/object:Hangman::Game
+player: !ruby/object:Hangman::Player
+  name: Luc
+password: !ruby/object:Hangman::Password
+  passwordd: oaxaca
+  pass_encrypted:
+  - 111
+  - 97
+  - 120
+  - 97
+  - 99
+  - 97
+  result: _a_a_a
+  used_letters:
+  - a
+  - e
+round: 3

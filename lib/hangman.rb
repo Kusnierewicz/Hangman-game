@@ -70,11 +70,12 @@ module Hangman
       sleep(0.5)
       print "Give it a shot! "
       proposal = gets.chomp.downcase
-      until ('a'..'z').include?(proposal)
-        sleep(0.5)
-        puts ""
-        print ">>> Please select a letter! "
-        proposal = gets.chomp.downcase
+      until ('a'..'z').include?(proposal) && !@password.used_letters.include?(proposal)
+          sleep(0.5)
+          puts ""
+          puts ">>> It would be best if you would choose a new letter!! "
+          print ">>> Remember that you have already chosen #{@password.used_letters}!! "
+          proposal = gets.chomp.downcase
       end
       sleep(0.5)
   	  @password.letter_checker(proposal.downcase)
@@ -127,8 +128,8 @@ module Hangman
           sleep(0.5)
           @password.print_board
           sleep(0.5)
-          @password.feedback
-          sleep(0.5)
+          #@password.feedback
+          #sleep(0.5)
           get_move
           sleep(0.5)
           unless winner?
