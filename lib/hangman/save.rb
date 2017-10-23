@@ -25,7 +25,7 @@ module Hangman
   	  game = Game.new
 	    game = YAML::load(yaml)
       sleep(1)
-      puts ">>> The Game has been successfully loaded <<<"
+      puts '>>> The Game has been successfully loaded <<<'
 	    game.resume_after_loading
     end
 
@@ -60,7 +60,5 @@ module Hangman
     def self.num_of_saves
       @list.count
     end
-
-
   end
 end

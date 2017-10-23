@@ -4,11 +4,11 @@ module Hangman
 	attr_accessor :name
 
 	def initialize
-	  @name = "none"
+	  @name = 'none'
 	end
 
 	def setup_player
-	  if @name == "none"
+	  if @name == 'none'
 	  	puts ">>> Hello! What's your name mate?!"
 	  	@name = gets.chomp
       end

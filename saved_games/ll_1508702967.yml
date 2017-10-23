@@ -1,0 +1,21 @@
+--- !ruby/object:Hangman::Game
+player: !ruby/object:Hangman::Player
+  name: ll
+password: !ruby/object:Hangman::Password
+  pass_encrypted:
+  - 110
+  - 101
+  - 101
+  - 100
+  - 121
+  result: nee__
+  used_letters:
+  - e
+  - i
+  - a
+  - n
+  - l
+  - s
+  - x
+  - r
+round: 9

@@ -1,3 +1,3 @@
-require_relative "../lib/hangman.rb"
+require_relative '../lib/hangman.rb'
 
 game = Hangman::Game.new.start_game
